@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Веб приложение</title>
+    <link rel="stylesheet" href="/style/styles.css">
+</head>
+<body>
+    <h1>Soundex</h1>
+    <h2>Compute soundex codes for a list of names</h2>
+    <h2>Names (comma or space-separated):</h2>
+
+    <!-- Отправить -->
+    <form action="/" method="post">
+        <input type="text" name="user_input">
+        <button type="submit">Send</button>
+    </form>
+     <!-- Тест -->
+    <form action="/test" method="post">
+        <button type="submit">Test</button>
+    </form>
+
+    <!-- Проверяем, есть ли данные -->
+    {{if .}}
+    <h2>The result of processing</h2>
+    <table>
+        <tr>
+            <th>Entered data</th>
+            <th>Result</th>
+        </tr>
+        <!-- Цикл для списка -->
+        {{range .}}
+        <tr>
+            <td>{{.UserInput}}</td>
+            <td>{{.Result}}</td>
+        </tr>
+        {{end}}
+    </table>
+    {{end}}
+</body>
+</html>
