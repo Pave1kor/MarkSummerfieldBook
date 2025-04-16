@@ -15,8 +15,9 @@ package font_test
 
 import (
 	"fmt"
-	"font"
 	"testing"
+
+	font "main/font"
 )
 
 func TestFont(t *testing.T) {
