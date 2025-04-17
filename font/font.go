@@ -15,8 +15,7 @@ func New(name string, size int) *Font {
 }
 func (f *Font) SetFamily(family string) error {
 	if family == "" {
-		f.family = "default"
-		return errors.New("font family is empty, set font family = default")
+		return errors.New("font family is empty")
 	}
 	f.family = family
 	return nil
