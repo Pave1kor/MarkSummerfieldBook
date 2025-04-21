@@ -9,14 +9,20 @@ import (
 // This function is the main function of the program
 func main() {
 	comparable := func(a, b interface{}) bool {
-		return a.(float64) <= b.(float64)
+		return a.(int) <= b.(int)
 	}
 
 	slice := slice.New(comparable)
-	slice.Add(2.2)
-	slice.Add(1.1)
-	slice.Add(3.3)
-	slice.Add(4.4)
+	for _, x := range []int{5, 8, -1, 3, 4, 22} {
+		slice.Add(x)
+	}
+	fmt.Println(slice)
+	for _, x := range []int{5, 5, 6} {
+		slice.Add(x)
+	}
+	slice.Remove(5)
+	value := slice.CheckList([]int{-1, 3, 4, 5, 5, 6, 8, 22})
+	fmt.Printf("%v\n", value)
+	fmt.Println(slice)
 	slice.Len()
-	fmt.Print(slice)
 }
