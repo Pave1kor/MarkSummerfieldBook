@@ -8,7 +8,7 @@ import (
 type Slicer interface {
 	Clear()
 	Add(value any)
-	Remove(index int) bool
+	Remove(value int) bool
 	Index(value any) int
 	At(index int) any
 	Len() int
@@ -33,18 +33,15 @@ func (s *Slice) Clear() {
 
 func (s *Slice) Add(value interface{}) {
 	index := 0
-	for i, v := range s.data {
-		if s.compare(v, value) {
-			index = i + 1
-		} else {
-			break
-		}
+	for index < len(s.data) && s.compare(s.data[index], value) {
+		index++
 	}
 	s.data = append(s.data[:index], append([]interface{}{value}, s.data[index:]...)...)
 }
 
-func (s *Slice) Remove(index int) bool {
-	if index < 0 || index >= len(s.data) {
+func (s *Slice) Remove(value interface{}) bool {
+	index := s.Index(value)
+	if index == -1 {
 		return false
 	}
 	s.data = append(s.data[:index], s.data[index+1:]...)
@@ -110,4 +107,12 @@ func NewIntSlice() *Slice {
 		},
 		data: make([]interface{}, 0),
 	}
+}
+func (s *Slice) CheckList(val []int) bool {
+	for i := range s.Len() {
+		if s.At(i) != val[i] {
+			return false
+		}
+	}
+	return true
 }
