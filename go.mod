@@ -1,3 +1,3 @@
-module github.com/Pave1kor/MarkSummerfieldBook/slice/slice
+module slicecode
 
 go 1.24.2

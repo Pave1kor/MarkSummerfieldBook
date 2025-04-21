@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	slice "github.com/Pave1kor/MarkSummerfieldBook/slice/slice"
+	slice "slicecode/slice/slice"
 )
 
 // This function is the main function of the program
